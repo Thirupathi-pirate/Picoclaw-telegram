@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: picoclaw-bot
+    runtime: go
+    plan: free
+    region: frankfurt
+    buildCommand: make build
+    startCommand: ./picoclaw gateway
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: PICOCLAW_GATEWAY_HOST
+        value: 0.0.0.0
+      - key: PICOCLAW_GATEWAY_PORT
+        value: 10000
+      - key: PICOCLAW_CONFIG
+        value: ./config/config.json
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_BACKUP_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
